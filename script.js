@@ -7,7 +7,14 @@ function criptografa() {
     let textoCripto = [];
     let contador = 0;
     let achou = false;
-    let p = document.querySelector(".demo");
+    let campoTexto = document.getElementById("texto");
+
+    if(document.querySelector("input").value.trim() != "") {
+
+    } else {
+        alert("Você precisa inserir um texto a ser criptografado.");
+        return;
+    }
 
     while(contador < texto.length) {
         achou = false;
@@ -33,28 +40,51 @@ function criptografa() {
 
     }
 
-    p.innerHTML = (textoCripto.join(""));
-    p.style.background = "none";
+    campoTexto.innerHTML = (textoCripto.join(""));
+    campoTexto.style.background = "none";
     criptografado = true;
 
 }
 
 function descriptografa() { 
+
     let vogais = ['a', 'e', 'i', 'o', 'u'];
     let cripto = ['ai', 'enter', 'imes', 'ober', 'ufat'];
     let textoDescripto = document.querySelector("input").value;
-    let p = document.querySelector(".demo");
+    let campoTexto = document.getElementById("texto");
+    let vetorAuxiliar = [];
+    let contador = 0;
+
+    if(document.querySelector("input").value.trim() != "") {
+        
+    } else {
+
+        alert("Você precisa inserir um texto a ser descriptografado.");
+        return;
+
+    }
 
     for(i = 0; i < cripto.length; i++) {
 
         let regex = new RegExp(cripto[i], 'g');
+        vetorAuxiliar[i] = textoDescripto.match(regex);
+
+        if(vetorAuxiliar[i] != null) {
+            contador += 1;
+        }
+
         textoDescripto = textoDescripto.replace(regex, vogais[i]);
-        
+    } 
+
+    if(contador != 0) {
+
+        campoTexto.style.background = "none";
+        campoTexto.innerHTML = (textoDescripto);
+
+    } else {
+
+        alert("Você precisa inserir um texto criptografado para poder descriptografar.");
+
     }
 
-    p.style.background = "none";
-    p.innerHTML = (textoDescripto);
-
-
 }
-
