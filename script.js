@@ -9,8 +9,8 @@ function criptografa() {
     let contador = 0;
     let achou = false;
     let campoTexto = document.getElementById("texto");
-
-    if(criptografado) alert("Você já criptografou esse texto. Descriptografe ou insira um novo texto a ser criptografado.");
+    let vetorAuxiliar = [];
+    let contadorAuxiliar = 0;
 
     if(document.querySelector("input").value.trim() != "") {
 
@@ -19,18 +19,36 @@ function criptografa() {
         return;
     }
 
+    for(i = 0; i < cripto.length; i++) {
+        let regex = new RegExp(cripto[i], 'g');
+        vetorAuxiliar[i] = document.querySelector("input").value.match(regex);
+
+        if(vetorAuxiliar[i] != null) {
+            contadorAuxiliar += 1;
+        }
+    }
+
+    if(contadorAuxiliar != 0) {
+        alert("Você só pode criptografar uma palavra descriptografada.");
+        return;
+    }
+
+    if(criptografado) alert("Você já criptografou esse texto. Descriptografe ou insira um novo texto a ser criptografado.");
+
+
     if(textoCripto.join("") != document.querySelector("input").value.trim() && document.querySelector("input").value.trim() != "") {
         criptografado = false;
     } else {
         alert("Você só pode criptografar um texto descriptografado");
         return;
-    }
+    } 
+
+    
 
     while(contador < texto.length) {
         achou = false;
 
         for(i = 0; i < vogais.length; i++) {
-
             console.log(texto[contador] , vogais[i]); 
 
             if(texto[contador] == vogais[i]){
@@ -49,11 +67,9 @@ function criptografa() {
         contador++;
 
     }
-
     campoTexto.innerHTML = (textoCripto.join(""));
     campoTexto.style.background = "none";
     criptografado = true;
-
 }
 
 function descriptografa() { 
@@ -65,6 +81,10 @@ function descriptografa() {
     let vetorAuxiliar = [];
     let contador = 0;
 
+    if(!criptografado) {
+        alert("Você só pode descriptografar uma palavra criptografada.");
+        return;
+    }
     if(document.querySelector("input").value.trim() != "") {
         
     } else {
