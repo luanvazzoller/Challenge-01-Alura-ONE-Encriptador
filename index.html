@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador Challenge 01 - Alura ONE - Luan Vazzollér</title>
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo da Alura com a inicial da letra A">
+    </header>
+
+    <main class="main">
+        <section>
+            <input placeholder="Insira o texto minúsculo"/>
+
+            <div>
+                <h6 class="informacao">Apenas letras minúsculas</h6>
+            </div>
+    
+            <div class="botoes">
+                <button class="encriptar" onclick=criptografa()>Criptografar</button>
+                <button class="desencriptar" onclick=descriptografa()>Descriptografar</button>
+            </div>
+        </section>
+
+            
+        <section>
+            <textarea class="texto" cols="20" rows="10" disabled="true"></textarea>
+        </section>
+    </main>    
+</body>
+</html>
