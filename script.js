@@ -1,13 +1,16 @@
 var criptografado = false;
-var textoCripto = [];
+
 
 function criptografa() {
     let texto = [... document.querySelector("input").value.toLowerCase()];
     let vogais = ['a', 'e', 'i', 'o', 'u'];
     let cripto = ['ai', 'enter', 'imes', 'ober', 'ufat'];
+    let textoCripto = [];
     let contador = 0;
     let achou = false;
     let campoTexto = document.getElementById("texto");
+
+    if(criptografado) alert("Você já criptografou esse texto. Descriptografe ou insira um novo texto a ser criptografado.");
 
     if(document.querySelector("input").value.trim() != "") {
 
@@ -17,7 +20,7 @@ function criptografa() {
     }
 
     if(textoCripto.join("") != document.querySelector("input").value.trim() && document.querySelector("input").value.trim() != "") {
-
+        criptografado = false;
     } else {
         alert("Você só pode criptografar um texto descriptografado");
         return;
@@ -87,6 +90,7 @@ function descriptografa() {
 
         campoTexto.style.background = "none";
         campoTexto.innerHTML = (textoDescripto);
+        criptografado = false;
 
     } else {
 
